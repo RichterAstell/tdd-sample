@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MoneyTest {
     @Test
     public void DollarMultiplication() {
-        Dollar five = new Dollar(5);
+        Money five = Money.dollar(5);
         // 5 * 2 を想定
-        assertEquals(new Dollar(10), five.times(2));
+        assertEquals(Money.dollar(10), five.times(2));
         // 5 * 3 を想定
-        assertEquals(new Dollar(15), five.times(3));
+        assertEquals(Money.dollar(15), five.times(3));
     }
     @Test
     public void FrancMultiplication() {
