@@ -8,11 +8,11 @@ public class DollarTest {
     @Test
     public void multiplication() {
         Dollar five = new Dollar(5);
-        five.times(2);
+        Dollar product = five.times(2);
         // 5 * 2 を想定
-        assertEquals(10, five.amount);
-        five.times(3);
+        assertEquals(10, product.amount);
+        product = five.times(3);
         // 5 * 3 を想定
-        assertEquals(15, five.amount);
+        assertEquals(15, product.amount);
     }
 }
