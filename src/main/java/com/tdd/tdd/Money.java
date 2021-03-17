@@ -1,14 +1,27 @@
 package com.tdd.tdd;
 
-public abstract class Money {
+class Money {
     protected int amount;
-    abstract Money times(int multiplier);
+    protected String currency;
+    Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
+    Money times(int multiplier) {
+        return new Money(this.amount * multiplier, this.currency);
+    }
+    String currency() {
+        return this.currency;
+    }
     public boolean equals(Object object) {
         Money money = (Money) object;
         return this.amount == money.amount
-                && getClass().equals(money.getClass());
+                && currency().equals(money.currency());
     }
     static Dollar dollar(int amount) {
-        return new Dollar(amount);
+        return new Dollar(amount, "USD");
+    }
+    static Franc franc(int amount) {
+        return new Franc(amount, "CHF");
     }
 }
