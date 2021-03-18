@@ -18,6 +18,9 @@ class Money {
         return this.amount == money.amount
                 && currency().equals(money.currency());
     }
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
     static Money dollar(int amount) {
         return new Money(amount, "USD");
     }
