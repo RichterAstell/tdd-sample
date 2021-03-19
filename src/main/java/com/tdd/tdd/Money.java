@@ -1,14 +1,22 @@
 package com.tdd.tdd;
 
-class Money {
+class Money implements Expression {
     protected int amount;
     protected String currency;
+
     Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
+
     Money times(int multiplier) {
         return new Money(this.amount * multiplier, this.currency);
+    }
+    Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+    public Money reduce(String to) {
+        return this;
     }
     String currency() {
         return this.currency;
@@ -17,9 +25,6 @@ class Money {
         Money money = (Money) object;
         return this.amount == money.amount
                 && currency().equals(money.currency());
-    }
-    public Expression plus(Money addend) {
-        return new Sum(this, addend);
     }
     static Money dollar(int amount) {
         return new Money(amount, "USD");
