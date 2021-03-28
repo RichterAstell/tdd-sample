@@ -2,11 +2,18 @@ package com.tdd.tdd;
 
 import org.junit.jupiter.api.Test;
 
-import javax.sound.midi.Soundbank;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoneyTest {
+    @Test
+    public void mixedAddition() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+        assertEquals(Money.dollar(10), result);
+    }
     @Test
     public void multiplication() {
         Money five = Money.dollar(5);

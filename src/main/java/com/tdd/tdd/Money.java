@@ -9,10 +9,10 @@ class Money implements Expression {
         this.currency = currency;
     }
 
-    Money times(int multiplier) {
+    Expression times(int multiplier) {
         return new Money(this.amount * multiplier, this.currency);
     }
-    Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
     public Money reduce(Bank bank, String to) {
